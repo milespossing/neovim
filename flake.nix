@@ -146,28 +146,34 @@
               lazydev-nvim
               fidget-nvim
               luasnip
+              indent-blankline-nvim
+              neorg
               tokyonight-nvim
               todo-comments-nvim
               mini-nvim
-              nvim-treesitter.withAllGrammars
-              # This is for if you only want some of the grammars
-              # (nvim-treesitter.withPlugins (
-              #   plugins: with plugins; [
-              #     nix
-              #     lua
-              #   ]
-              # ))
+              (nvim-treesitter.withPlugins (
+                plugins:
+                nvim-treesitter.allGrammars
+                ++ [
+                  plugins.tree-sitter-norg
+                ]
+              ))
             ];
             basics = [
+              catppuccin-nvim
               comment-nvim
+              flash-nvim
             ];
             editor = [
+              lualine-nvim
               noice-nvim
               nui-nvim
               nvim-notify
               oil-nvim
               snacks-nvim
               nvim-surround
+              kulala-nvim
+              grug-far-nvim
             ];
             blink-cmp = [
               blink-cmp
@@ -181,6 +187,11 @@
               conform-nvim
               conjure
               cmp-conjure
+              neogit
+              diffview-nvim
+            ];
+            fun = [
+              cellular-automaton-nvim
             ];
             kickstart-debug = [
               nvim-dap
@@ -207,13 +218,6 @@
               plenary-nvim
             ];
           };
-
-          # not loaded automatically at startup.
-          # use with packadd and an autocommand in config to achieve lazy loading
-          # NOTE: this template is using lazy.nvim so, which list you put them in is irrelevant.
-          # startupPlugins or optionalPlugins, it doesnt matter, lazy.nvim does the loading.
-          # I just put them all in startupPlugins. I could have put them all in here instead.
-          optionalPlugins = { };
 
           # shared libraries to be added to LD_LIBRARY_PATH
           # variable available to nvim runtime
@@ -296,6 +300,7 @@
               blink-cmp = true;
               ai = true;
               lspsAndFormatters = true;
+              fun = true;
 
               kickstart-autopairs = true;
               kickstart-debug = true;

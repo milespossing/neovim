@@ -8,7 +8,15 @@ return {
       providers = {
         openai = {
           endpoint = 'https://api.openai.com/v1',
-          model = 'gpt-4o',
+          model = 'o3-mini',
+        },
+        ['openai-5-mini'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://api.openai.com/v1',
+          model = 'gpt-5-mini',
+          extra_request_body = {
+            temperature = 1,
+          },
         },
       },
     },

@@ -1,13 +1,49 @@
--- Adds git related signs to the gutter, as well as utilities for managing changes
--- NOTE: gitsigns is already included in init.lua but contains only the base
--- config. This will add also the recommended keymaps.
-
 return {
+  {
+    'folke/snacks.nvim',
+    opts = {
+      lazygit = {},
+    },
+    keys = {
+      {
+        '<leader>gl',
+        function()
+          Snacks.lazygit()
+        end,
+        desc = 'LazyGit',
+      },
+    },
+  },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      'folke/snacks.nvim', -- optional
+    },
+    keys = {
+      {
+        '<leader>gg',
+        function()
+          require('neogit').open()
+        end,
+        'Neogit',
+      },
+    },
+  },
   {
     'lewis6991/gitsigns.nvim',
     -- NOTE: nixCats: return true only if category is enabled, else false
-    enabled = require('nixCatsUtils').enableForCategory("kickstart-gitsigns"),
+    enabled = require('nixCatsUtils').enableForCategory 'kickstart-gitsigns',
     opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
