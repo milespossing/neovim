@@ -124,6 +124,7 @@
               lua-language-server
               nixd
               stylua
+              eslint_d
             ];
             kickstart-debug = [
               delve
@@ -151,6 +152,7 @@
               tokyonight-nvim
               todo-comments-nvim
               mini-nvim
+              typescript-tools-nvim
               (nvim-treesitter.withPlugins (
                 plugins:
                 nvim-treesitter.allGrammars
