@@ -143,6 +143,7 @@
               gitsigns-nvim
               which-key-nvim
               nvim-web-devicons
+              nvim-autopairs
               plenary-nvim
               lazydev-nvim
               fidget-nvim
@@ -160,6 +161,9 @@
                   plugins.tree-sitter-norg
                 ]
               ))
+              nvim-dap
+              nvim-dap-virtual-text
+              nvim-dap-ui
             ];
             basics = [
               catppuccin-nvim
@@ -198,30 +202,6 @@
             fun = [
               cellular-automaton-nvim
             ];
-            kickstart-debug = [
-              nvim-dap
-              nvim-dap-ui
-              nvim-dap-go
-              nvim-nio
-            ];
-            kickstart-indent_line = [
-              indent-blankline-nvim
-            ];
-            kickstart-lint = [
-              nvim-lint
-            ];
-            kickstart-autopairs = [
-              nvim-autopairs
-            ];
-            kickstart-neo-tree = [
-              neo-tree-nvim
-              nui-nvim
-              # nixCats will filter out duplicate packages
-              # so you can put dependencies with stuff even if they're
-              # also somewhere else
-              nvim-web-devicons
-              plenary-nvim
-            ];
           };
 
           # shared libraries to be added to LD_LIBRARY_PATH
@@ -236,18 +216,12 @@
           # this section is for environmentVariables that should be available
           # at RUN TIME for plugins. Will be available to path within neovim terminal
           environmentVariables = {
-            test = {
-              CATTESTVAR = "It worked!";
-            };
           };
 
           # If you know what these are, you can provide custom ones by category here.
           # If you dont, check this link out:
           # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh
           extraWrapperArgs = {
-            test = [
-              ''--set CATTESTVAR2 "It worked again!"''
-            ];
           };
 
           # lists of the functions you would have passed to

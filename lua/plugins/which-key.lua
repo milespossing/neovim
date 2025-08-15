@@ -12,10 +12,12 @@ return {
           { '[', group = 'prev' },
           { ']', group = 'next' },
           { '<leader>a', group = 'ai' },
+          { '<leader>d', group = 'debug' },
           { '<leader>s', group = 'search' },
           { '<leader>f', group = 'file/find' },
           { '<leader>g', group = 'git' },
           { '<leader>h', group = 'help' },
+          { '<leader>u', group = 'ui' },
           { '<leader>x', group = 'diagnostics' },
           {
             '<leader>w',
