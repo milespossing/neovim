@@ -163,10 +163,13 @@
             ];
             basics = [
               catppuccin-nvim
+              kanagawa-nvim
+              rose-pine
               comment-nvim
               flash-nvim
             ];
             editor = [
+              bufferline-nvim
               lualine-nvim
               noice-nvim
               nui-nvim

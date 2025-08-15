@@ -7,6 +7,10 @@ return {
       vim.cmd.colorscheme 'catppuccin-macchiato'
     end,
   },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+  },
   -- TODO: We want to add a bit more to this
   {
     'nvim-lualine/lualine.nvim',

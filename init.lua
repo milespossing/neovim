@@ -177,4 +177,5 @@ require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 
   { import = 'plugins' },
 }, lazyOptions)
 
-require 'lsp'
+require 'config.lsp'
+require 'config.keymaps'

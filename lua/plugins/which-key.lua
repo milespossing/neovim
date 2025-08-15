@@ -1,18 +1,38 @@
 return {
   {
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').add {
-        { '<leader>w', group = 'Window' },
-        { '<leader>wh', '<C-w>h', desc = 'Switch to left window' },
-        { '<leader>wj', '<C-w>j', desc = 'Switch to below window' },
-        { '<leader>wk', '<C-w>k', desc = 'Switch to above window' },
-        { '<leader>wl', '<C-w>l', desc = 'Switch to right window' },
-      }
-    end,
+    event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
+    opts_extend = { 'spec' },
+    opts = {
+      preset = 'helix',
+      spec = {
+        {
+          mode = { 'n', 'v' },
+          { '<leader>c', group = 'code' },
+          { '[', group = 'prev' },
+          { ']', group = 'next' },
+          { '<leader>a', group = 'ai' },
+          { '<leader>s', group = 'search' },
+          { '<leader>f', group = 'file/find' },
+          { '<leader>g', group = 'git' },
+          { '<leader>h', group = 'help' },
+          { '<leader>x', group = 'diagnostics' },
+          {
+            '<leader>w',
+            group = 'window',
+            expand = function()
+              return require('which-key.extras').expand.win()
+            end,
+          },
+          {
+            '<leader>b',
+            group = 'buffer',
+            expand = function()
+              return require('which-key.extras').expand.buf()
+            end,
+          },
+        },
+      },
+    },
   },
 }
