@@ -35,6 +35,7 @@ return {
         function()
           Snacks.explorer.open()
         end,
+        desc = 'File Explorer',
       },
     },
   },
@@ -95,7 +96,7 @@ return {
     opts = {
       keymaps = {
         insert = '<C-g>s',
-        normal = 'gsa',
+        normal = 'gs',
         normal_cur = 'gss',
         normal_line = 'gsS',
         normal_cur_line = 'gSS',
@@ -114,6 +115,11 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
+        always_show_bufferline = false,
+        -- stylua: ignore
+        close_command = function(n) Snacks.bufdelete(n) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) Snacks.bufdelete(n) end,
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local s = ' '

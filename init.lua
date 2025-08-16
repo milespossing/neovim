@@ -3,6 +3,6 @@ require('nixCatsUtils').setup {
 }
 require 'config.options'
 require 'config.autocommands'
-require 'lua.config.lazy-plugins'
+require 'config.lazy-plugins'
 require 'config.lsp'
 require 'config.keymaps'

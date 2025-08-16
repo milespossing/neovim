@@ -12,8 +12,17 @@ return {
       },
     },
     dependencies = {
-      'saghen/blink.compat',
-      lazy = true,
+      {
+        'saghen/blink.compat',
+        optional = true,
+      },
+    },
+  },
+  {
+    'catppuccin',
+    optional = true,
+    opts = {
+      integrations = { blink_cmp = true },
     },
   },
 }
