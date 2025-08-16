@@ -6,7 +6,7 @@ return {
     },
     keys = {
       {
-        '<leader>gl',
+        '<leader>gg',
         function()
           Snacks.lazygit()
         end,
@@ -15,27 +15,7 @@ return {
     },
   },
   {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
-
-      'folke/snacks.nvim', -- optional
-    },
-    keys = {
-      {
-        '<leader>gg',
-        function()
-          require('neogit').open()
-        end,
-        'Neogit',
-      },
-    },
-  },
-  {
     'lewis6991/gitsigns.nvim',
-    -- NOTE: nixCats: return true only if category is enabled, else false
-    enabled = require('nixCatsUtils').enableForCategory 'kickstart-gitsigns',
     opts = {
       signs = {
         add = { text = '+' },

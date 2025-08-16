@@ -112,7 +112,19 @@ return {
     event = 'VeryLazy',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = {},
+    opts = {
+      options = {
+        diagnostics = 'nvim_lsp',
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          local s = ' '
+          for e, n in pairs(diagnostics_dict) do
+            local sym = e == 'error' and ' ' or (e == 'warning' and ' ' or ' ')
+            s = s .. n .. sym
+          end
+          return s
+        end,
+      },
+    },
     keys = {
       { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
       { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
@@ -132,6 +144,20 @@ return {
       provider_selector = function(bufnr, filetype, buftype)
         return { 'treesitter', 'indent' }
       end,
+    },
+  },
+  {
+    'folke/trouble.nvim',
+    cmd = { 'Trouble' },
+    opts = {
+      modes = {
+        lsp = {
+          win = { position = 'right' },
+        },
+      },
+    },
+    keys = {
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
     },
   },
 }

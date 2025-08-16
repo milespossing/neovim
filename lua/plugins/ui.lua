@@ -1,16 +1,4 @@
 return {
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin-nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
-    end,
-  },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-  },
   -- TODO: We want to add a bit more to this
   {
     'nvim-lualine/lualine.nvim',

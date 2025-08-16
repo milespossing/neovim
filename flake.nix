@@ -126,34 +126,38 @@
               stylua
               eslint_d
             ];
-            kickstart-debug = [
-              delve
-            ];
-            kickstart-lint = [
-              markdownlint-cli
-            ];
           };
 
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = with pkgs.vimPlugins; {
+            min = [
+              nvim-autopairs
+              comment-nvim
+              flash-nvim
+              nvim-surround
+            ];
             general = [
               vim-sleuth
+              
+              nvim-ufo
+              promise-async
+
               lazy-nvim
               comment-nvim
               gitsigns-nvim
               which-key-nvim
               nvim-web-devicons
-              nvim-autopairs
               plenary-nvim
               lazydev-nvim
               fidget-nvim
-              luasnip
               indent-blankline-nvim
               neorg
-              tokyonight-nvim
+              snacks-nvim
               todo-comments-nvim
               mini-nvim
               typescript-tools-nvim
+            ];
+            treesitter = [
               (nvim-treesitter.withPlugins (
                 plugins:
                 nvim-treesitter.allGrammars
@@ -161,16 +165,12 @@
                   plugins.tree-sitter-norg
                 ]
               ))
-              nvim-dap
-              nvim-dap-virtual-text
-              nvim-dap-ui
             ];
-            basics = [
+            themes = [
               catppuccin-nvim
               kanagawa-nvim
               rose-pine
-              comment-nvim
-              flash-nvim
+              tokyonight-nvim
             ];
             editor = [
               bufferline-nvim
@@ -179,8 +179,6 @@
               nui-nvim
               nvim-notify
               oil-nvim
-              snacks-nvim
-              nvim-surround
               kulala-nvim
               grug-far-nvim
             ];
@@ -196,11 +194,11 @@
               conform-nvim
               conjure
               cmp-conjure
-              neogit
               diffview-nvim
-            ];
-            fun = [
-              cellular-automaton-nvim
+              nvim-dap
+              nvim-dap-virtual-text
+              nvim-dap-ui
+              trouble-nvim
             ];
           };
 
@@ -269,6 +267,8 @@
             # and a set of categories that you want
             # (and other information to pass to lua)
             categories = {
+              min = true;
+              themes = true;
               general = true;
               gitPlugins = true;
               customPlugins = true;
@@ -280,16 +280,6 @@
               ai = true;
               lspsAndFormatters = true;
               fun = true;
-
-              kickstart-autopairs = true;
-              kickstart-debug = true;
-              kickstart-lint = true;
-              kickstart-indent_line = true;
-
-              # this kickstart extra didnt require any extra plugins
-              # so it doesnt have a category above.
-              # but we can still send the info from nix to lua that we want it!
-              kickstart-gitsigns = true;
 
               # we can pass whatever we want actually.
               have_nerd_font = false;

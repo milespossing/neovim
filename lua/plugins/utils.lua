@@ -3,6 +3,7 @@ return {
     'folke/snacks.nvim',
     lazy = false,
     opts = {
+      animate = { enabled = true },
       bigfile = { enabled = true },
       dim = { enabled = true },
       indent = { enabled = true },
