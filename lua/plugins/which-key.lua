@@ -16,7 +16,10 @@ return {
           { '<leader>s', group = 'search' },
           { '<leader>f', group = 'file/find' },
           { '<leader>g', group = 'git' },
-          { '<leader>h', group = 'help' },
+          { '<leader>gh', group = 'hunks' },
+          { '<leader>h', group = 'help', icon = ' ' },
+          { '<leader>n', group = 'notes', icon = ' ' },
+          { '<leader>t', group = 'toggle/tools' },
           { '<leader>u', group = 'ui' },
           { '<leader>x', group = 'diagnostics' },
           {

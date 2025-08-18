@@ -271,6 +271,7 @@
               themes = true;
               general = true;
               gitPlugins = true;
+              treesitter = true;
               customPlugins = true;
               test = true;
               basics = true;

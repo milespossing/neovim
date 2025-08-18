@@ -134,6 +134,10 @@ return {
     keys = {
       { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
       { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
+      { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Toggle Pin' },
+      { '<leader>br', '<cmd>BufferLineCloseRight<cr>', desc = 'Close buffers right' },
+      { '<leader>br', '<cmd>BufferLineCloseLeft<cr>', desc = 'Close buffers left' },
+      { '<leader>bX', '<cmd>BufferLineCloseOthers<cr>', desc = 'Close others' },
     },
   },
   {
@@ -164,6 +168,26 @@ return {
     },
     keys = {
       { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
+    },
+    specs = {
+      'folke/snacks.nvim',
+      opts = function(_, opts)
+        return vim.tbl_deep_extend('force', opts or {}, {
+          picker = {
+            actions = require('trouble.sources.snacks').actions,
+            win = {
+              input = {
+                keys = {
+                  ['<c-t>'] = {
+                    'trouble_open',
+                    mode = { 'n', 'i' },
+                  },
+                },
+              },
+            },
+          },
+        })
+      end,
     },
   },
 }

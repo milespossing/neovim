@@ -17,12 +17,12 @@ return {
         optional = true,
       },
     },
-  },
-  {
-    'catppuccin',
-    optional = true,
-    opts = {
-      integrations = { blink_cmp = true },
+    specs = {
+      'catppuccin',
+      optional = true,
+      opts = {
+        integrations = { blink_cmp = true },
+      },
     },
   },
 }

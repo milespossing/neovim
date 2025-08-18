@@ -15,7 +15,15 @@ return {
             default_workspace = 'notes',
           },
         },
+        ['core.keybinds'] = {
+          config = {
+            default_keybinds = false,
+          },
+        },
       },
+    },
+    keys = {
+      { '<leader>nn', '<Plug>(neorg.dirman.new-note)', desc = 'new note' },
     },
   },
 }
