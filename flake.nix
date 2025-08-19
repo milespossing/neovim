@@ -114,10 +114,12 @@
               universal-ctags
               ripgrep
               fd
+              nodejs
               stdenv.cc.cc
               lua51Packages.lua
               luajitPackages.luarocks
               gnumake
+              gh
             ];
             lspsAndFormatters = [
               # nix
@@ -192,6 +194,7 @@
             ];
             ai = [
               avante-nvim
+              copilot-lua
               blink-cmp-avante
             ];
             ide = [

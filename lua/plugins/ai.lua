@@ -2,9 +2,12 @@ return {
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
+    dependencies = {
+      'zbirenbaum/copilot.lua',
+    },
     version = false,
     opts = {
-      provider = 'openai',
+      provider = 'copilot',
       providers = {
         openai = {
           endpoint = 'https://api.openai.com/v1',
@@ -21,6 +24,13 @@ return {
         },
       },
     },
+  },
+  {
+    'zbirenbaum/copilot.lua',
+    optional = true,
+    opts = function()
+      require('copilot.api').status = require 'copilot.status'
+    end,
   },
   {
     'saghen/blink.cmp',
