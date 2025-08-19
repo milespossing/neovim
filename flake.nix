@@ -120,10 +120,14 @@
               gnumake
             ];
             lspsAndFormatters = [
-              nix-doc
-              lua-language-server
+              # nix
               nixd
+              nix-doc
+              nixfmt-rfc-style
+              # lua
+              lua-language-server
               stylua
+              # typescript
               eslint_d
             ];
           };

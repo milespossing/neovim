@@ -8,12 +8,33 @@ vim.lsp.config('*', {
 })
 
 vim.lsp.config('ts_ls', {
-  filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
-  root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json' },
+  capabilities = capabilities_final,
 })
 vim.lsp.config('luals', {
-  filetypes = { 'lua' },
-  root_markers = { 'stylua.toml', '.luarc.jsonc', '.git' },
+  capabilities = capabilities_final,
+})
+vim.lsp.config('nixd', {
+  capabilities = capabilities_final,
 })
 
-vim.lsp.enable { 'ts_ls', 'luals' }
+vim.lsp.enable { 'ts_ls', 'luals', 'nixd' }
+
+-- Default inlay hints
+vim.lsp.inlay_hint.enable(true)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('lsp-keymaps', { clear = true }),
+  callback = function(args)
+    local toggle = require 'snacks.toggle'
+    local opts = { buffer = args.buf, silent = true }
+    local map = function(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, vim.tbl_extend('force', opts, { desc = desc }))
+    end
+    map({ 'n', 'v' }, 'gd', Snacks.picker.lsp_definitions, 'Lsp Definitions')
+    map({ 'n', 'v' }, 'gD', Snacks.picker.lsp_declarations, 'Lsp Definitions')
+    map('n', 'grr', Snacks.picker.lsp_references, 'Lsp References')
+    map('n', '<leader>ss', Snacks.picker.lsp_symbols, 'Lsp Symbols')
+    map('n', '<leader>sS', Snacks.picker.lsp_workspace_symbols, 'Lsp Workspace Symbols')
+    toggle.inlay_hints():map '<leader>ch'
+  end,
+})

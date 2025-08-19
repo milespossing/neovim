@@ -2,9 +2,6 @@
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- code
-vim.keymap.set('n', '<leader>cl', Snacks.picker.lsp_config, { desc = 'LSP Config' })
-
 -- Windows
 vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Move Window Left' })
 vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Move Window Down' })
