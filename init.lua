@@ -4,5 +4,7 @@ require('nixCatsUtils').setup {
 require 'config.options'
 require 'config.autocommands'
 require 'config.lazy-plugins'
-require 'config.lsp'
+if require('nixCatsUtils').enableForCategory 'full' then
+  require 'config.lsp'
+end
 require 'config.keymaps'

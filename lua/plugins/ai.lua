@@ -1,6 +1,7 @@
 return {
   {
     'yetone/avante.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('full'),
     event = 'VeryLazy',
     dependencies = {
       'zbirenbaum/copilot.lua',
@@ -28,12 +29,13 @@ return {
   {
     'zbirenbaum/copilot.lua',
     optional = true,
-    opts = function()
+    init = function()
       require('copilot.api').status = require 'copilot.status'
     end,
   },
   {
     'saghen/blink.cmp',
+    enabled = require('nixCatsUtils').enableForCategory('full'),
     dependencies = {
       'Kaiser-Yang/blink-cmp-avante',
     },

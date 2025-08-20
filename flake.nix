@@ -110,10 +110,12 @@
           # at RUN TIME for plugins. Will be available to PATH within neovim terminal
           # this includes LSPs
           lspsAndRuntimeDeps = with pkgs; {
-            general = [
-              universal-ctags
+            min = [
               ripgrep
               fd
+            ];
+            editor = [
+              universal-ctags
               nodejs
               stdenv.cc.cc
               lua51Packages.lua
@@ -121,7 +123,7 @@
               gnumake
               gh
             ];
-            lspsAndFormatters = [
+            full = [
               # nix
               nixd
               nix-doc
@@ -137,31 +139,16 @@
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = with pkgs.vimPlugins; {
             min = [
+              lazy-nvim
               nvim-autopairs
               comment-nvim
               flash-nvim
               nvim-surround
-            ];
-            general = [
               vim-sleuth
-
               nvim-ufo
               promise-async
-
-              lazy-nvim
               comment-nvim
-              gitsigns-nvim
-              which-key-nvim
-              nvim-web-devicons
-              plenary-nvim
-              lazydev-nvim
-              fidget-nvim
               indent-blankline-nvim
-              neorg
-              snacks-nvim
-              todo-comments-nvim
-              mini-nvim
-              typescript-tools-nvim
             ];
             treesitter = [
               (nvim-treesitter.withPlugins (
@@ -172,13 +159,19 @@
                 ]
               ))
             ];
-            themes = [
+            editor = [
+              which-key-nvim
+              gitsigns-nvim
+              nvim-web-devicons
+              plenary-nvim
+              snacks-nvim
+              mini-nvim
+              todo-comments-nvim
               catppuccin-nvim
               kanagawa-nvim
               rose-pine
               tokyonight-nvim
-            ];
-            editor = [
+
               bufferline-nvim
               lualine-nvim
               noice-nvim
@@ -188,16 +181,20 @@
               kulala-nvim
               grug-far-nvim
             ];
-            blink-cmp = [
+            full = [
+              lazydev-nvim
+              neorg
+              fidget-nvim
+
               blink-cmp
               blink-compat
-            ];
-            ai = [
+              blink-copilot
+              blink-cmp-git
+
               avante-nvim
               copilot-lua
               blink-cmp-avante
-            ];
-            ide = [
+
               conform-nvim
               conjure
               cmp-conjure
@@ -253,10 +250,29 @@
 
       # see :help nixCats.flake.outputs.packageDefinitions
       packageDefinitions = {
+        min =
+          { ... }:
+          {
+            settings = {
+              suffix-path = true;
+              suffix-LD = true;
+              wrapRc = true;
+              # IMPORTANT:
+              # your alias may not conflict with your other packages.
+              aliases = [ "vim" ];
+              # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+              hosts.python3.enable = true;
+              hosts.node.enable = true;
+            };
+            categories = {
+              min = true;
+              treesitter = true;
+            };
+          };
         # These are the names of your packages
         # you can include as many as you wish.
-        nvim =
-          { pkgs, name, ... }:
+        full =
+          { ... }:
           {
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
@@ -266,7 +282,7 @@
               wrapRc = true;
               # IMPORTANT:
               # your alias may not conflict with your other packages.
-              aliases = [ ];
+              aliases = [ "nvim" ];
               # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
               hosts.python3.enable = true;
               hosts.node.enable = true;
@@ -275,39 +291,15 @@
             # (and other information to pass to lua)
             categories = {
               min = true;
-              themes = true;
-              general = true;
-              gitPlugins = true;
               treesitter = true;
-              customPlugins = true;
-              test = true;
-              basics = true;
               editor = true;
-              ide = true;
-              blink-cmp = true;
-              ai = true;
-              lspsAndFormatters = true;
-              fun = true;
-
-              # we can pass whatever we want actually.
-              have_nerd_font = false;
-
-              example = {
-                youCan = "add more than just booleans";
-                toThisSet = [
-                  "and the contents of this categories set"
-                  "will be accessible to your lua with"
-                  "nixCats('path.to.value')"
-                  "see :help nixCats"
-                  "and type :NixCats to see the categories set in nvim"
-                ];
-              };
+              full = true;
             };
           };
       };
       # In this section, the main thing you will need to do is change the default package name
       # to the name of the packageDefinitions entry you wish to use as the default.
-      defaultPackageName = "nvim";
+      defaultPackageName = "full";
     in
 
     # see :help nixCats.flake.outputs.exports

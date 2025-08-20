@@ -1,6 +1,7 @@
 return {
   {
     'mfussenegger/nvim-dap',
+    enabled = require('nixCatsUtils').enableForCategory 'full',
     dependencies = {
       'rcarriga/nvim-dap-ui',
       -- virtual text for the debugger
@@ -9,12 +10,15 @@ return {
         opts = {},
       },
     },
-    keys = {
-      { '<leader>db', require('dap').toggle_breakpoint, { desc = 'Toggle Breakpoint' } },
-    },
+    keys = function()
+      return {
+        { '<leader>db', require('dap').toggle_breakpoint, { desc = 'Toggle Breakpoint' } },
+      }
+    end,
   },
   {
     'rcarriga/nvim-dap-ui',
+    optional = true,
     dependencies = { 'nvim-neotest/nvim-nio' },
     opts = {},
     -- stylua: ignore

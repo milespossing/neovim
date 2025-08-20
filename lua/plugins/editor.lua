@@ -26,6 +26,7 @@ return {
   },
   {
     'folke/snacks.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     opts = {
       explorer = { enable = true },
     },
@@ -41,6 +42,7 @@ return {
   },
   {
     'folke/snacks.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     opts = {
       picker = { enable = true },
     },
@@ -110,6 +112,7 @@ return {
   },
   {
     'akinsho/bufferline.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     event = 'VeryLazy',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -142,6 +145,7 @@ return {
   },
   {
     'MagicDuck/grug-far.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     opts = {},
     keys = {
       { '<leader>sr', '<cmd>GrugFar<cr>' },
@@ -158,6 +162,7 @@ return {
   },
   {
     'folke/trouble.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('full'),
     cmd = { 'Trouble' },
     opts = {
       modes = {

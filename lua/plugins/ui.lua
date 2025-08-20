@@ -2,6 +2,7 @@ return {
   -- TODO: We want to add a bit more to this
   {
     'nvim-lualine/lualine.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
@@ -22,6 +23,7 @@ return {
   },
   {
     'folke/noice.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     event = 'VeryLazy',
     dependencies = {
       'MunifTanjim/nui.nvim',
@@ -47,6 +49,7 @@ return {
   },
   {
     'folke/snacks.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('full'),
     opts = {
       dashboard = {
         enabled = true,

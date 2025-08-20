@@ -1,6 +1,7 @@
 return {
   {
     'folke/which-key.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
     opts_extend = { 'spec' },
     opts = {

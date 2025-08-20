@@ -1,45 +1,80 @@
+local catsUtils = require 'nixCatsUtils'
+local map = function(mode, lhs, rhs, opts, category)
+  if category == nil or catsUtils.enableForCategory(category) then
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
+end
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Windows
-vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Move Window Left' })
-vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Move Window Down' })
-vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'Move Window Up' })
-vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Move Window Right' })
-vim.keymap.set('n', '<leader>w-', '<cmd>split<cr>', { desc = 'Split Horizontal' })
-vim.keymap.set('n', '<leader>w\\', '<cmd>vsplit<cr>', { desc = 'Split Vertial' })
+map('n', '<leader>wh', '<C-w>h', { desc = 'Move Window Left' })
+map('n', '<leader>wj', '<C-w>j', { desc = 'Move Window Down' })
+map('n', '<leader>wk', '<C-w>k', { desc = 'Move Window Up' })
+map('n', '<leader>wl', '<C-w>l', { desc = 'Move Window Right' })
+map('n', '<leader>w-', '<cmd>split<cr>', { desc = 'Split Horizontal' })
+map('n', '<leader>w\\', '<cmd>vsplit<cr>', { desc = 'Split Vertial' })
 
 -- Help
-vim.keymap.set('n', '<leader>hh', Snacks.picker.help, { desc = 'Help tags' })
-vim.keymap.set('n', '<leader>hc', Snacks.picker.commands, { desc = 'Commands' })
-vim.keymap.set('n', '<leader>ha', Snacks.picker.autocmds, { desc = 'Autocommands' })
-vim.keymap.set('n', '<leader>hk', Snacks.picker.keymaps, { desc = 'Keymaps' })
-vim.keymap.set('n', '<leader>uc', Snacks.picker.colorschemes, { desc = 'Colorscheme' })
+map('n', '<leader>hh', function()
+  Snacks.picker.help()
+end, { desc = 'Help tags' }, 'editor')
+map('n', '<leader>hc', function()
+  Snacks.picker.commands()
+end, { desc = 'Commands' }, 'editor')
+map('n', '<leader>ha', function()
+  Snacks.picker.autocmds()
+end, { desc = 'Autocommands' }, 'editor')
+map('n', '<leader>hk', function()
+  Snacks.picker.keymaps()
+end, { desc = 'Keymaps' }, 'editor')
+map('n', '<leader>uc', function()
+  Snacks.picker.colorschemes()
+end, { desc = 'Colorscheme' }, 'editor')
 
 -- Git
-vim.keymap.set('n', '<leader>gf', Snacks.picker.git_files, { desc = 'Git Files' })
-vim.keymap.set('n', '<leader>gl', Snacks.picker.git_log_file, { desc = 'Log File' })
+map('n', '<leader>gf', function()
+  Snacks.picker.git_files()
+end, { desc = 'Git Files' }, 'editor')
+map('n', '<leader>gl', function()
+  Snacks.picker.git_log_file()
+end, { desc = 'Log File' }, 'editor')
 
 -- Folds
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
 
 -- Toggles
-Snacks.toggle.line_number():map '<leader>ul'
-Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
-Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
-Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
-Snacks.toggle.dim():map '<leader>uD'
-Snacks.toggle.zen():map '<leader>uz'
-Snacks.toggle.animate():map '<leader>ua'
+if catsUtils.enableForCategory 'editor' then
+  Snacks.toggle.line_number():map '<leader>ul'
+  Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
+  Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
+  Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
+  Snacks.toggle.dim():map '<leader>uD'
+  Snacks.toggle.zen():map '<leader>uz'
+  Snacks.toggle.animate():map '<leader>ua'
+end
 
 -- Search
 
-vim.keymap.set('n', '<leader>s:', Snacks.picker.command_history, { desc = 'Command History' })
-vim.keymap.set('n', '<leader>sj', Snacks.picker.jumps, { desc = 'Jumps' })
-vim.keymap.set('n', '<leader>s"', Snacks.picker.registers, { desc = 'Registers' })
-vim.keymap.set('n', '<leader>sm', Snacks.picker.marks, { desc = 'Marks' })
-vim.keymap.set('n', '<leader>sr', require('grug-far').open, { desc = 'Find and Replace' })
-vim.keymap.set('n', '<leader>sR', Snacks.picker.resume, { desc = 'Resume' })
+map('n', '<leader>s:', function()
+  Snacks.picker.command_history()
+end, { desc = 'Command History' }, 'editor')
+map('n', '<leader>sj', function()
+  Snacks.picker.jumps()
+end, { desc = 'Jumps' }, 'editor')
+map('n', '<leader>s"', function()
+  Snacks.picker.registers()
+end, { desc = 'Registers' }, 'editor')
+map('n', '<leader>sm', function()
+  Snacks.picker.marks()
+end, { desc = 'Marks' }, 'editor')
+map('n', '<leader>sr', function()
+  require('grug-far').open()
+end, { desc = 'Find and Replace' }, 'editor')
+map('n', '<leader>sR', function()
+  Snacks.picker.resume()
+end, { desc = 'Resume' }, 'editor')

@@ -1,6 +1,7 @@
 return {
   {
     'folke/snacks.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     lazy = false,
     opts = {
       animate = {},
@@ -23,6 +24,7 @@ return {
   },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    enabled = require('nixCatsUtils').enableForCategory('editor'),
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -41,6 +43,7 @@ return {
   },
   {
     'Olical/conjure',
+    enabled = require('nixCatsUtils').enableForCategory('full'),
     ft = { 'clojure' },
     lazy = true,
     dependencies = {
@@ -50,6 +53,7 @@ return {
   },
   {
     'saghen/blink.cmp',
+    optional = true,
     opts = {
       sources = {
         per_filetype = {
