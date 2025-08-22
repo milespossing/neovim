@@ -181,6 +181,8 @@
               oil-nvim
               kulala-nvim
               grug-far-nvim
+
+              toggleterm-nvim
             ];
             full = [
               lazydev-nvim
