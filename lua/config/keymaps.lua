@@ -56,6 +56,7 @@ if catsUtils.enableForCategory 'editor' then
   Snacks.toggle.dim():map '<leader>uD'
   Snacks.toggle.zen():map '<leader>uz'
   Snacks.toggle.animate():map '<leader>ua'
+  require('utils.toggles').auto_format:map '<leader>tf'
 end
 
 -- Search

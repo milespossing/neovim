@@ -124,6 +124,8 @@
               gh
             ];
             full = [
+              # General
+              vscode-langservers-extracted
               # nix
               nixd
               nix-doc

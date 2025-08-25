@@ -16,8 +16,11 @@ vim.lsp.config('luals', {
 vim.lsp.config('nixd', {
   capabilities = capabilities_final,
 })
+vim.lsp.config('jsonls', {
+  capabilities = capabilities_final,
+})
 
-vim.lsp.enable { 'ts_ls', 'luals', 'nixd' }
+vim.lsp.enable { 'ts_ls', 'luals', 'nixd', 'jsonls' }
 
 -- Default inlay hints
 vim.lsp.inlay_hint.enable(true)

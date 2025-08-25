@@ -1,40 +1,35 @@
 return {
   {
     'stevearc/conform.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     lazy = false,
     keys = {
       {
         '<leader>cf',
         function()
-          require('conform').format { async = true, lsp_fallback = true }
+          require('conform').format { async = true, lsp_fallback = true, timeout_ms = 1000 }
         end,
-        mode = '',
         desc = 'Format buffer',
       },
     },
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
+      format_on_save = function()
+        if vim.g.autoformat_on_save then
+          return {
+            lsp_fallback = true,
+            timeout_ms = 500,
+          }
+        end
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
         typescript = { 'eslint_d' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        json = { 'eslint_d' },
       },
     },
+    init = function()
+      vim.g.autoformat_on_save = true
+    end,
   },
 }
