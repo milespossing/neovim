@@ -99,6 +99,19 @@
           mkPlugin,
           ...
         }@packageDef:
+        let
+          treesitter-kulala-http-grammar = pkgs.tree-sitter.buildGrammar {
+            language = "kulala_http";
+            version = "5.3.1";
+            src = pkgs.fetchFromGitHub {
+              owner = "mistweaverco";
+              repo = "kulala.nvim";
+              rev = "902fc21e8a3fee7ccace37784879327baa6d1ece";
+              hash = "sha256-whQpwZMEvD62lgCrnNryrEvfSwLJJ+IqVCywTq78Vf8=";
+            };
+            location = "lua/tree-sitter";
+          };
+        in
         {
           # to define and use a new category, simply add a new list to a set here,
           # and later, you will include categoryname = true; in the set you
@@ -122,6 +135,10 @@
               luajitPackages.luarocks
               gnumake
               gh
+
+              openssl
+              grpcurl
+              websocat
             ];
             full = [
               # General
@@ -159,6 +176,7 @@
                 nvim-treesitter.allGrammars
                 ++ [
                   plugins.tree-sitter-norg
+                  treesitter-kulala-http-grammar
                 ]
               ))
             ];
