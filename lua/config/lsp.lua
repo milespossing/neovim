@@ -9,6 +9,27 @@ vim.lsp.config('*', {
 
 vim.lsp.config('ts_ls', {
   capabilities = capabilities_final,
+  on_attach = function(_, bufnr)
+    local map = function(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+    end
+    local map_action = function(mode, lhs, actions, desc)
+      map(mode, lhs, function()
+        vim.lsp.buf.code_action {
+          context = {
+            only = actions,
+          },
+          apply = true,
+        }
+      end, desc)
+    end
+    map('n', '<leader>ca', function()
+      vim.lsp.buf.code_action()
+    end, 'Lsp Code [A]ction')
+    map_action('n', '<leader>cA', { 'source.fixAll' }, 'Fix [A]ll')
+    map_action('n', '<leader>ci', { 'source.addMissingImports.ts', 'source.addMissingImports' }, 'Add Missing [I]mports')
+    map_action('n', '<leader>cr', { 'source.organizeImports' }, 'O[r]ganize Imports')
+  end,
 })
 vim.lsp.config('luals', {
   capabilities = capabilities_final,
