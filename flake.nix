@@ -143,6 +143,7 @@
             full = [
               # General
               vscode-langservers-extracted
+              prettierd
               # nix
               nixd
               nix-doc

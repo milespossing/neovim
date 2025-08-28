@@ -17,7 +17,7 @@ return {
       format_on_save = function()
         if vim.g.autoformat_on_save then
           return {
-            lsp_fallback = true,
+            lsp_format = 'fallback',
             timeout_ms = 500,
           }
         end
@@ -25,7 +25,8 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         typescript = { 'eslint_d' },
-        json = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+        json = { 'prettier_d' },
       },
     },
     init = function()
