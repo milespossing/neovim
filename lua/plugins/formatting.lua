@@ -26,7 +26,7 @@ return {
         lua = { 'stylua' },
         typescript = { 'eslint_d' },
         typescriptreact = { 'eslint_d' },
-        json = { 'prettier_d' },
+        json = { 'prettierd' },
       },
     },
     init = function()
