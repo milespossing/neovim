@@ -47,8 +47,11 @@ return {
     ft = { 'clojure' },
     lazy = true,
     dependencies = {
-      'PaterJason/cmp-conjure',
-      lazy = true,
+      {
+        'PaterJason/cmp-conjure',
+        lazy = true,
+      },
+      'saghen/blink.compat',
     },
   },
   {

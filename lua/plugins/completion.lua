@@ -5,11 +5,7 @@ return {
     version = '*',
     event = 'InsertEnter',
     dependencies = {
-      {
-        'saghen/blink.compat',
-        optional = true,
-      },
-      'giuxtaposition/blink-copilot',
+      'fang2hou/blink-copilot',
       'Kaiser-Yang/blink-cmp-git',
     },
     opts = {
@@ -85,5 +81,10 @@ return {
         end,
       },
     },
+  },
+  {
+    'saghen/blink.compat',
+    optional = true,
+    lazy = true,
   },
 }

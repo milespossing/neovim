@@ -29,6 +29,12 @@ return {
   {
     'zbirenbaum/copilot.lua',
     optional = true,
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
     init = function()
       require('copilot.api').status = require 'copilot.status'
     end,
