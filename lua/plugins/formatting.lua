@@ -27,6 +27,8 @@ return {
         typescript = { 'eslint_d' },
         typescriptreact = { 'eslint_d' },
         json = { 'prettierd' },
+        markdown = { 'prettierd', 'markdownlint-cli2' },
+        ['markdown.mdx'] = { 'prettierd', 'markdownlint-cli2' },
       },
     },
     init = function()

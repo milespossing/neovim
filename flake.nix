@@ -135,6 +135,8 @@
               luajitPackages.luarocks
               gnumake
               gh
+              # Markdown
+              markdownlint-cli2
 
               openssl
               grpcurl
@@ -198,6 +200,7 @@
               lualine-nvim
               noice-nvim
               nui-nvim
+              nvim-lint
               nvim-notify
               oil-nvim
               kulala-nvim
@@ -219,6 +222,7 @@
               copilot-lua
               blink-cmp-avante
 
+              none-ls-nvim
               conform-nvim
               conjure
               cmp-conjure
@@ -227,6 +231,9 @@
               nvim-dap-virtual-text
               nvim-dap-ui
               trouble-nvim
+
+              markdown-preview-nvim
+              render-markdown-nvim
             ];
           };
 

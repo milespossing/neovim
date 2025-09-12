@@ -33,6 +33,12 @@ end, { desc = 'Keymaps' }, 'editor')
 map('n', '<leader>uc', function()
   Snacks.picker.colorschemes()
 end, { desc = 'Colorscheme' }, 'editor')
+map('n', '<leader>us', function()
+  Snacks.scratch()
+end, { desc = 'Open Scratch' }, 'editor')
+map('n', '<leader>uS', function()
+  Snacks.scratch.list()
+end, { desc = 'List Scratches' }, 'editor')
 
 -- Git
 map('n', '<leader>gf', function()
