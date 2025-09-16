@@ -26,7 +26,7 @@ return {
   },
   {
     'folke/snacks.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     opts = {
       explorer = { enable = true },
     },
@@ -42,7 +42,7 @@ return {
   },
   {
     'folke/snacks.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     opts = {
       picker = { enable = true },
     },
@@ -112,12 +112,13 @@ return {
   },
   {
     'akinsho/bufferline.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     event = 'VeryLazy',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
+        numbers = 'ordinal',
         always_show_bufferline = false,
         -- stylua: ignore
         close_command = function(n) Snacks.bufdelete(n) end,
@@ -138,14 +139,19 @@ return {
       { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
       { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
       { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Toggle Pin' },
-      { '<leader>br', '<cmd>BufferLineCloseRight<cr>', desc = 'Close buffers right' },
-      { '<leader>br', '<cmd>BufferLineCloseLeft<cr>', desc = 'Close buffers left' },
+      { '<leader>bkr', '<cmd>BufferLineCloseRight<cr>', desc = 'Close buffers right' },
+      { '<leader>bkl', '<cmd>BufferLineCloseLeft<cr>', desc = 'Close buffers left' },
       { '<leader>bX', '<cmd>BufferLineCloseOthers<cr>', desc = 'Close others' },
+      { '<leader>bb', '<cmd>BufferLinePick<cr>', desc = 'Pick buffer' },
+      { '<leader>uBd', '<cmd>BufferLineSortByDirectory<cr>', desc = 'Sort by directory' },
+      { '<leader>uBt', '<cmd>BufferLineSortByTabs<cr>', desc = 'Sort by tabs' },
+      { '<leader>uBn', '<cmd>BufferLineSortByRelativeDirectory<cr>', desc = 'Sort by relative directory' },
+      { '<leader>uBm', '<cmd>BufferLineSortByExtension<cr>', desc = 'Sort by relative tabs' },
     },
   },
   {
     'MagicDuck/grug-far.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     opts = {},
     keys = {
       { '<leader>sr', '<cmd>GrugFar<cr>' },
@@ -162,7 +168,7 @@ return {
   },
   {
     'folke/trouble.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('full'),
+    enabled = require('nixCatsUtils').enableForCategory 'full',
     cmd = { 'Trouble' },
     opts = {
       modes = {
