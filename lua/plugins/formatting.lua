@@ -24,8 +24,8 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        typescript = { 'eslint_d' },
-        typescriptreact = { 'eslint_d' },
+        typescript = { 'eslint_d', 'prettierd' },
+        typescriptreact = { 'eslint_d', 'prettierd' },
         json = { 'prettierd' },
         markdown = { 'prettierd', 'markdownlint-cli2' },
         ['markdown.mdx'] = { 'prettierd', 'markdownlint-cli2' },
