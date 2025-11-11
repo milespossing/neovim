@@ -156,6 +156,8 @@
               # typescript
               typescript-language-server
               eslint_d
+              # typst
+              tinymist
             ];
           };
 
