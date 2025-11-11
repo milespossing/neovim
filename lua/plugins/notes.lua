@@ -3,7 +3,7 @@ return {
     'nvim-neorg/neorg',
     lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
     version = '*', -- Pin Neorg to the latest stable release
-    enabled = require('nixCatsUtils').enableForCategory('full'),
+    enabled = require('nixCatsUtils').enableForCategory 'full',
     opts = {
       load = {
         ['core.defaults'] = {},
@@ -21,6 +21,7 @@ return {
             default_keybinds = false,
           },
         },
+        ['core.syntax'] = {},
       },
     },
     keys = {
