@@ -76,7 +76,7 @@ return {
             return vim.bo[buf].buftype == 'help'
           end,
         },
-        'Trouble',
+        'trouble',
       },
       left = {
         {
