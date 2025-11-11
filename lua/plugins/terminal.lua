@@ -1,12 +1,17 @@
 return {
   {
-    'akinsho/toggleterm.nvim',
+    'folke/snacks.nvim',
     enabled = require('nixCatsUtils').enableForCategory 'editor',
-    version = '*',
     opts = {
-      open_mapping = [[<c-t>]],
-      hide_numbers = true,
-      shell = vim.o.shell,
+      terminal = { enable = true },
+    },
+    keys = {
+      {
+        '<C-t>',
+        function()
+          Snacks.terminal.toggle()
+        end,
+      },
     },
   },
 }
