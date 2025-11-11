@@ -35,11 +35,11 @@ return {
     opts = {
       window = {
         mappings = {
-          ['T'] = {
+          ['<C-t>'] = {
             function(state)
               local node = state.tree:get_node()
               local path = node.type == 'directory' and node.path or node._parent_id
-              local cmd = 'TermNew dir=' .. path
+              local cmd = 'TermNew dir=' .. path .. ' name=' .. path
               vim.cmd(cmd)
             end,
             desc = 'Open in terminal',
