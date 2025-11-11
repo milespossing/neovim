@@ -207,6 +207,9 @@
               grug-far-nvim
 
               toggleterm-nvim
+
+              edgy-nvim
+              neo-tree-nvim
             ];
             full = [
               lazydev-nvim

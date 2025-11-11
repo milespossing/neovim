@@ -25,21 +25,53 @@ return {
     opts = {},
   },
   {
-    'folke/snacks.nvim',
-    enabled = require('nixCatsUtils').enableForCategory 'editor',
-    opts = {
-      explorer = { enable = true },
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons', -- optional, but recommended
     },
+    opts = {
+      window = {
+        mappings = {
+          ['T'] = {
+            function(state)
+              local node = state.tree:get_node()
+              local path = node.type == 'directory' and node.path or node._parent_id
+              local cmd = 'TermNew dir=' .. path
+              vim.cmd(cmd)
+            end,
+            desc = 'Open in terminal',
+          },
+        },
+      },
+    },
+    lazy = false, -- neo-tree will lazily load itself
     keys = {
       {
         '<leader>e',
-        function()
-          Snacks.explorer.open()
-        end,
+        '<cmd>Neotree toggle<cr>',
         desc = 'File Explorer',
       },
     },
   },
+  -- {
+  --   'folke/snacks.nvim',
+  --   enabled = require('nixCatsUtils').enableForCategory 'editor',
+  --   opts = {
+  --     explorer = { enable = true },
+  --   },
+  --   keys = {
+  --     {
+  --       '<leader>e',
+  --       function()
+  --         Snacks.explorer.open()
+  --       end,
+  --       desc = 'File Explorer',
+  --     },
+  --   },
+  -- },
   {
     'folke/snacks.nvim',
     enabled = require('nixCatsUtils').enableForCategory 'editor',

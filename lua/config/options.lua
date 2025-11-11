@@ -7,7 +7,7 @@ vim.g.maplocalleader = '\\'
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 -- NOTE: nixCats: we asked nix if we have it instead of setting it here.
 -- because nix is more likely to know if we have a nerd font or not.
-vim.g.have_nerd_font = require('nixCatsUtils').enableForCategory('have_nerd_font')
+vim.g.have_nerd_font = require('nixCatsUtils').enableForCategory 'have_nerd_font'
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -80,3 +80,7 @@ vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
+-- Status Line
+vim.opt.laststatus = 3
+vim.opt.splitkeep = 'screen'

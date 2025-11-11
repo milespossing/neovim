@@ -2,7 +2,7 @@ return {
   -- TODO: We want to add a bit more to this
   {
     'nvim-lualine/lualine.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
@@ -13,7 +13,7 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
+        lualine_c = { { 'filename', path = 1 } },
         lualine_x = { 'encoding', 'fileformat', 'filetype', 'lsp_status' },
         lualine_y = { 'progress', 'location' },
         lualine_z = { { 'datetime', style = '%H:%M' } },
@@ -23,7 +23,7 @@ return {
   },
   {
     'folke/noice.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     event = 'VeryLazy',
     dependencies = {
       'MunifTanjim/nui.nvim',
@@ -49,10 +49,64 @@ return {
   },
   {
     'folke/snacks.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('full'),
+    enabled = require('nixCatsUtils').enableForCategory 'full',
     opts = {
       dashboard = {
         enabled = true,
+      },
+    },
+  },
+  {
+    'folke/edgy.nvim',
+    event = 'VeryLazy',
+    opts = {
+      bottom = {
+        {
+          ft = 'toggleterm',
+          size = { height = 0.4 },
+          -- exclude floating windows
+          filter = function(buf, win)
+            return vim.api.nvim_win_get_config(win).relative == ''
+          end,
+        },
+        {
+          ft = 'help',
+          size = { height = 20 },
+          filter = function(buf)
+            return vim.bo[buf].buftype == 'help'
+          end,
+        },
+        'Trouble',
+      },
+      left = {
+        {
+          title = 'File Explorer',
+          ft = 'neo-tree',
+          filter = function(buf)
+            return vim.b[buf].neo_tree_source == 'filesystem'
+          end,
+          size = { height = 0.5 },
+        },
+        {
+          title = 'Neo-Tree Buffers',
+          ft = 'neo-tree',
+          filter = function(buf)
+            return vim.b[buf].neo_tree_source == 'buffers'
+          end,
+          pinned = true,
+          collapsed = true,
+          open = 'Neotree position=top buffers',
+        },
+      },
+      animate = {
+        enabled = true,
+      },
+      wo = {
+        winbar = true,
+      },
+      icons = {
+        closed = ' ',
+        open = ' ',
       },
     },
   },
