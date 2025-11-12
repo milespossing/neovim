@@ -48,6 +48,11 @@ return {
             module = 'blink-cmp-git',
             name = 'git',
           },
+          cmdline = {
+            enabled = function()
+              return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match "^[%%0-9,'<>%-]*!"
+            end,
+          },
         },
       },
     },
