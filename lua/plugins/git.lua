@@ -1,23 +1,7 @@
 return {
   {
-    'folke/snacks.nvim',
-    optional = true,
-    opts = {
-      lazygit = {},
-    },
-    keys = {
-      {
-        '<leader>gg',
-        function()
-          Snacks.lazygit()
-        end,
-        desc = 'LazyGit',
-      },
-    },
-  },
-  {
     'lewis6991/gitsigns.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     opts = {
       signs = {
         add = { text = '+' },

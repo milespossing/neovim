@@ -85,3 +85,11 @@ end, { desc = 'Find and Replace' }, 'editor')
 map('n', '<leader>sR', function()
   Snacks.picker.resume()
 end, { desc = 'Resume' }, 'editor')
+
+-- Terminal
+if catsUtils.enableForCategory 'editor' then
+  local term = require 'utils.term'
+  vim.keymap.set('n', '<leader>gg', function()
+    term.lazygit:toggle()
+  end, { desc = 'Lazygit' })
+end
