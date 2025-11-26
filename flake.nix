@@ -240,6 +240,11 @@
               markdown-preview-nvim
               render-markdown-nvim
             ];
+            test = [
+              neotest
+              neotest-vitest
+              FixCursorHold-nvim
+            ];
           };
 
           # shared libraries to be added to LD_LIBRARY_PATH
@@ -330,6 +335,7 @@
               treesitter = true;
               editor = true;
               full = true;
+              test = true;
             };
           };
       };
