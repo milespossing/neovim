@@ -6,7 +6,6 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'fang2hou/blink-copilot',
-      'Kaiser-Yang/blink-cmp-git',
     },
     opts = {
       keymap = { preset = 'default' },
@@ -36,7 +35,7 @@ return {
         },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'git' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
         providers = {
           copilot = {
             name = 'copilot',
@@ -44,14 +43,11 @@ return {
             score_offset = 100,
             async = true,
           },
-          git = {
-            module = 'blink-cmp-git',
-            name = 'git',
-          },
           cmdline = {
             enabled = function()
               return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match "^[%%0-9,'<>%-]*!"
             end,
+            async = true,
           },
         },
       },

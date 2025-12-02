@@ -141,11 +141,15 @@
               openssl
               grpcurl
               websocat
+
+              fish
             ];
             full = [
               # General
               vscode-langservers-extracted
               prettierd
+              # Clojure
+              clojure-lsp
               # nix
               nixd
               nix-doc
