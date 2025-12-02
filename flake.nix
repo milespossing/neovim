@@ -149,6 +149,7 @@
               vscode-langservers-extracted
               prettierd
               # Clojure
+              clojure
               clojure-lsp
               # nix
               nixd
