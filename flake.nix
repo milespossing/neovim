@@ -214,6 +214,7 @@
               grug-far-nvim
 
               nvim-paredit
+              nvim-parinfer
 
               toggleterm-nvim
 

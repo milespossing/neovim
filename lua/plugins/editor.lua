@@ -237,4 +237,7 @@ return {
     'julienvincent/nvim-paredit',
     opts = {},
   },
+  {
+    'gpanders/nvim-parinfer',
+  },
 }
