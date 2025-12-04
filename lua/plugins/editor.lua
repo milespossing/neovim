@@ -233,4 +233,8 @@ return {
       end,
     },
   },
+  {
+    'julienvincent/nvim-paredit',
+    opts = {},
+  },
 }

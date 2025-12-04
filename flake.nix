@@ -213,6 +213,8 @@
               kulala-nvim
               grug-far-nvim
 
+              nvim-paredit
+
               toggleterm-nvim
 
               edgy-nvim
