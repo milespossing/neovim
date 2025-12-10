@@ -3,6 +3,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     enabled = require('nixCatsUtils').enableForCategory 'editor',
+    lazy = false,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
@@ -92,7 +93,7 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == 'filesystem'
           end,
-          size = { height = 0.5 },
+          size = { height = 0.5, width = 50 },
         },
         {
           title = 'Neo-Tree Buffers',
@@ -100,9 +101,17 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == 'buffers'
           end,
-          pinned = true,
-          collapsed = true,
-          open = 'Neotree position=top buffers',
+        },
+        {
+          title = 'Neo-Tree Git Status',
+          ft = 'neo-tree',
+          filter = function(buf)
+            return vim.b[buf].neo_tree_source == 'git_status'
+          end,
+        },
+        {
+          title = 'Aerial',
+          ft = 'aerial',
         },
       },
       animate = {

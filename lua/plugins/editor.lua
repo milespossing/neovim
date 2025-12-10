@@ -33,8 +33,10 @@ return {
       'nvim-tree/nvim-web-devicons', -- optional, but recommended
     },
     opts = {
+
       window = {
         mappings = {
+          ['<space>'] = 'none',
           ['<C-t>'] = {
             function(state)
               local node = state.tree:get_node()
@@ -50,28 +52,39 @@ return {
     lazy = false, -- neo-tree will lazily load itself
     keys = {
       {
-        '<leader>e',
+        '<leader>ee',
         '<cmd>Neotree toggle<cr>',
         desc = 'File Explorer',
       },
+      {
+        '<leader>eb',
+        '<cmd>Neotree buffers<cr>',
+        desc = 'Buffers Explorer',
+      },
+      {
+        '<leader>gs',
+        '<cmd>Neotree git_status<cr>',
+        desc = 'Git Status Explorer',
+      },
     },
   },
-  -- {
-  --   'folke/snacks.nvim',
-  --   enabled = require('nixCatsUtils').enableForCategory 'editor',
-  --   opts = {
-  --     explorer = { enable = true },
-  --   },
-  --   keys = {
-  --     {
-  --       '<leader>e',
-  --       function()
-  --         Snacks.explorer.open()
-  --       end,
-  --       desc = 'File Explorer',
-  --     },
-  --   },
-  -- },
+  {
+    'stevearc/aerial.nvim',
+    opts = {
+      backends = { 'treesitter', 'lsp', 'markdown' },
+      filter_kind = false,
+    },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+    keys = {
+      {
+        '<leader>xo',
+        '<cmd>AerialToggle<cr>',
+      },
+    },
+  },
   {
     'folke/snacks.nvim',
     enabled = require('nixCatsUtils').enableForCategory 'editor',
@@ -140,45 +153,6 @@ return {
         change = 'gsr',
         change_line = 'gsR',
       },
-    },
-  },
-  {
-    'akinsho/bufferline.nvim',
-    enabled = require('nixCatsUtils').enableForCategory 'editor',
-    event = 'VeryLazy',
-    version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = {
-      options = {
-        numbers = 'ordinal',
-        always_show_bufferline = false,
-        -- stylua: ignore
-        close_command = function(n) Snacks.bufdelete(n) end,
-        -- stylua: ignore
-        right_mouse_command = function(n) Snacks.bufdelete(n) end,
-        diagnostics = 'nvim_lsp',
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          local s = ' '
-          for e, n in pairs(diagnostics_dict) do
-            local sym = e == 'error' and ' ' or (e == 'warning' and ' ' or ' ')
-            s = s .. n .. sym
-          end
-          return s
-        end,
-      },
-    },
-    keys = {
-      { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
-      { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
-      { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Toggle Pin' },
-      { '<leader>bkr', '<cmd>BufferLineCloseRight<cr>', desc = 'Close buffers right' },
-      { '<leader>bkl', '<cmd>BufferLineCloseLeft<cr>', desc = 'Close buffers left' },
-      { '<leader>bX', '<cmd>BufferLineCloseOthers<cr>', desc = 'Close others' },
-      { '<leader>bb', '<cmd>BufferLinePick<cr>', desc = 'Pick buffer' },
-      { '<leader>uBd', '<cmd>BufferLineSortByDirectory<cr>', desc = 'Sort by directory' },
-      { '<leader>uBt', '<cmd>BufferLineSortByTabs<cr>', desc = 'Sort by tabs' },
-      { '<leader>uBn', '<cmd>BufferLineSortByRelativeDirectory<cr>', desc = 'Sort by relative directory' },
-      { '<leader>uBm', '<cmd>BufferLineSortByExtension<cr>', desc = 'Sort by relative tabs' },
     },
   },
   {

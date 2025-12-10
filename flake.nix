@@ -220,6 +220,7 @@
 
               edgy-nvim
               neo-tree-nvim
+              aerial-nvim
             ];
             full = [
               lazydev-nvim

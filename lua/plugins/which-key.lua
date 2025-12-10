@@ -1,7 +1,7 @@
 return {
   {
     'folke/which-key.nvim',
-    enabled = require('nixCatsUtils').enableForCategory('editor'),
+    enabled = require('nixCatsUtils').enableForCategory 'editor',
     event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
     opts_extend = { 'spec' },
     opts = {
@@ -36,6 +36,13 @@ return {
             expand = function()
               return require('which-key.extras').expand.buf()
             end,
+          },
+          {
+            '<c-w><space>',
+            function()
+              require('which-key').show { keys = '<c-w>', loop = true }
+            end,
+            desc = 'Window (hydra)',
           },
         },
       },
