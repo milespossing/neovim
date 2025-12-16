@@ -33,10 +33,8 @@ return {
       'nvim-tree/nvim-web-devicons', -- optional, but recommended
     },
     opts = {
-
       window = {
         mappings = {
-          ['<space>'] = 'none',
           ['<C-t>'] = {
             function(state)
               local node = state.tree:get_node()
@@ -47,6 +45,12 @@ return {
             desc = 'Open in terminal',
           },
         },
+      },
+      sources = {
+        'filesystem',
+        'buffers',
+        'git_status',
+        'document_symbols',
       },
     },
     lazy = false, -- neo-tree will lazily load itself
@@ -66,22 +70,10 @@ return {
         '<cmd>Neotree git_status<cr>',
         desc = 'Git Status Explorer',
       },
-    },
-  },
-  {
-    'stevearc/aerial.nvim',
-    opts = {
-      backends = { 'treesitter', 'lsp', 'markdown' },
-      filter_kind = false,
-    },
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-    keys = {
       {
         '<leader>xo',
-        '<cmd>AerialToggle<cr>',
+        '<cmd>Neotree document_symbols<cr>',
+        desc = 'Document Symbols Explorer',
       },
     },
   },

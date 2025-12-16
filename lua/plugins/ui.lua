@@ -110,8 +110,11 @@ return {
           end,
         },
         {
-          title = 'Aerial',
-          ft = 'aerial',
+          title = 'Neo-Tree Document Symbols',
+          ft = 'neo-tree',
+          filter = function(buf)
+            return vim.b[buf].neo_tree_source == 'document_symbols'
+          end,
         },
       },
       animate = {

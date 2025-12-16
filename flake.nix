@@ -148,6 +148,7 @@
               # General
               vscode-langservers-extracted
               prettierd
+              marksman
               # Clojure
               clojure
               clojure-lsp
