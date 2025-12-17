@@ -84,6 +84,11 @@ return {
             return vim.bo[buf].buftype == 'help'
           end,
         },
+        {
+          title = 'Test Output',
+          ft = 'neotest-output-panel',
+          size = { height = 0.4 },
+        },
         'trouble',
       },
       left = {
@@ -115,6 +120,13 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == 'document_symbols'
           end,
+        },
+      },
+      right = {
+        {
+          title = 'Test Summary',
+          ft = 'neotest-summary',
+          size = { width = 50 },
         },
       },
       animate = {
