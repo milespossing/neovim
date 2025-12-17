@@ -27,6 +27,12 @@ return {
       end
       require('neotest').setup(opts)
     end,
+    keys = {
+      { '<leader>ts', '<CMD>Neotest summary<CR>', desc = 'Test Summary' },
+      { '<leader>tr', '<CMD>Neotest run<CR>', desc = 'Run Test' },
+      { '<leader>td', '<CMD>Neotest debug<CR>', desc = 'Debug Test' },
+      { '<leader>to', '<CMD>Neotest output<CR>', desc = 'Test Output' },
+    },
   },
   {
     'nvim-neotest/neotest',

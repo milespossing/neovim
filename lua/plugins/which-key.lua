@@ -20,7 +20,7 @@ return {
           { '<leader>gh', group = 'hunks' },
           { '<leader>h', group = 'help', icon = ' ' },
           { '<leader>n', group = 'notes', icon = ' ' },
-          { '<leader>t', group = 'toggle/tools' },
+          { '<leader>o', group = 'toggle' },
           { '<leader>u', group = 'ui' },
           { '<leader>x', group = 'diagnostics' },
           {
