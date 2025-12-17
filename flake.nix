@@ -149,6 +149,8 @@
               vscode-langservers-extracted
               prettierd
               marksman
+              # Debugging
+              vscode-js-debug
               # Clojure
               clojure
               clojure-lsp
