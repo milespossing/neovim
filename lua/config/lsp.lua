@@ -53,7 +53,20 @@ vim.lsp.config('marksman', {
   capabilities = capabilities_final,
 })
 
-vim.lsp.enable { 'ts_ls', 'luals', 'marksman', 'nixd', 'jsonls', 'tinymist', 'clojure-lsp' }
+vim.lsp.config('yaml-language-server', {
+  capabilities = capabilities_final,
+})
+
+vim.lsp.enable {
+  'ts_ls',
+  'luals',
+  'marksman',
+  'nixd',
+  'jsonls',
+  'tinymist',
+  'clojure-lsp',
+  'yaml-language-server',
+}
 
 -- Default inlay hints
 vim.lsp.inlay_hint.enable(true)

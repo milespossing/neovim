@@ -143,12 +143,14 @@
               websocat
 
               fish
+              yamlfmt
             ];
             full = [
               # General
               vscode-langservers-extracted
               prettierd
               marksman
+              yaml-language-server
               # Debugging
               vscode-js-debug
               # Clojure

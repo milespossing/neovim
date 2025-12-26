@@ -29,6 +29,7 @@ return {
         json = { 'prettierd' },
         markdown = { 'prettierd', 'markdownlint-cli2' },
         ['markdown.mdx'] = { 'prettierd', 'markdownlint-cli2' },
+        yaml = { 'yamlfmt' },
       },
     },
     init = function()
