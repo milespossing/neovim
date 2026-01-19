@@ -90,6 +90,16 @@ return {
           size = { height = 0.4 },
         },
         'trouble',
+        {
+          title = 'Debug Repl',
+          ft = 'dap-repl',
+          size = { height = 0.3 },
+        },
+        {
+          title = 'Debug Console',
+          ft = 'dapui_console',
+          size = { height = 0.3 },
+        },
       },
       left = {
         {
